@@ -6,7 +6,7 @@ const Search = ({ setSearchText }) => {
       <input
         type="text"
         placeholder="Search color"
-        onChange={(e) => setSearchText(e.target.value)}
+        onChange={(e) => setSearchText(e.target.value.toLowerCase())}
       ></input>
     </div>
   );
