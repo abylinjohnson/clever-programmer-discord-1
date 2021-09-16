@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Search from "./components/Search";
+import ColorList from "./components/colorList";
+import { useState } from "react";
 
 function App() {
+  const COLORS = [
+    { name: "blue" },
+    { name: "purple" },
+    { name: "pink" },
+    { name: "red" },
+    { name: "green" },
+    { name: "black" },
+    { name: "grey" },
+    { name: "violet" },
+    { name: "yellow" },
+    { name: "teal" },
+    { name: "aqua" },
+    { name: "crimson" },
+    { name: "chartreuse" },
+    { name: "darkgrey" },
+    { name: "cyan" },
+    { name: "magenta" },
+  ];
+  const [searchText, setSearchText] = useState([]);
+  console.log(searchText);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Search setSearchText={setSearchText} />
+      <ColorList
+        colors={COLORS.filter((color) =>
+          color.name.toLowerCase().includes(searchText)
+        )}
+      />
     </div>
   );
 }
